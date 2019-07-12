@@ -1,0 +1,32 @@
+#미로탐색
+
+N,M = map(int, input().strip().split())
+Array = []
+
+for _ in range(N):
+    line = list(list(map(int, input().strip())))
+    Array.append(line)
+
+
+check = [[False]*M for _ in range(N)] #방문 유무
+result = [[0]*M for _ in range(N)]
+
+#오른쪽,왼쪽,위,아래
+dx = [1,-1,0,0]
+dy = [0,0,1,-1]
+
+
+que =[[0,0]]
+result[0][0] = 1
+
+while que:
+    x,y = que.pop(0)
+    for i in range(4):
+        ex,ey = x + dx[i] , y + dy[i]
+        if ex >= 0 and ey >=0 and ex < N and ey < M:
+            if check[ex][ey] == False and Array[ex][ey] == 1:
+                check[ex][ey] = True
+                result[ex][ey] = result[x][y] + 1
+                que.append([ex,ey])
+
+print(result[N-1][M-1])
