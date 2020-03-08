@@ -14,7 +14,7 @@ array.sort(reverse=True)
 answer = 0
 
 for index in range(N):
-    if array[index] - i > 0:
-        answer += array[index] - i
+    if array[index] - index > 0:
+        answer += array[index] - index
 
 print(answer)
